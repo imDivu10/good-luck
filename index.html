@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best of Luck for Your Internals! ✨</title>
+    <style>
+        :root {
+            --bg-color: #fcf8ff; /* Soft lavender tint background */
+            --card-bg: #ffffff;
+            --primary-pink: #ffd3e8; /* Baby pink border */
+            --primary-lavender: #e8dbff; /* Soft lavender highlight */
+            --text-dark: #4a4254; /* Muted deep violet text */
+            --accent-purple: #c3b1e1; /* Pastel purple accent */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-dark);
+        }
+
+        /* Floating background elements for cute aesthetic */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(232, 219, 255, 0.5); /* Lavender bubbles */
+            animation: float 8s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        .bubble:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 10%; animation-duration: 6s; }
+        .bubble:nth-child(2) { width: 120px; height: 120px; bottom: 15%; right: 10%; background: rgba(255, 211, 232, 0.5); /* Baby pink bubble */ animation-duration: 9s; }
+        .bubble:nth-child(3) { width: 60px; height: 60px; bottom: 20%; left: 15%; background: rgba(232, 219, 255, 0.4); animation-duration: 7s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .card-container {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(195, 177, 225, 0.25);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            z-index: 10;
+            border: 4px solid var(--primary-pink);
+            position: relative;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .card-container:hover {
+            transform: scale(1.02);
+        }
+
+        .mascot {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite ease-in-out;
+            display: inline-block;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: #d480ab; /* Deep pastel pink */
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #bfaec4;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            background-color: var(--primary-lavender);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn-luck {
+            background-color: #ccb7e6; /* Soft lavender button */
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(204, 183, 230, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .btn-luck:hover {
+            background-color: #bfa3df;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(204, 183, 230, 0.6);
+        }
+
+        .btn-luck:active {
+            transform: translateY(1px);
+        }
+
+        /* Confetti particle styling */
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cute decorative background background bubbles -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <!-- Main Message Card -->
+    <div class="card-container">
+        <div class="mascot">(๑•̀ㅂ•́)و✧</div>
+        <h1>Best of Luck, Friend!</h1>
+        <div class="subtitle">✨ Internal Exams Edition ✨</div>
+        
+        <p>
+            Just a gentle reminder that you have studied hard and <span class="highlight">you've got this!</span> 📚 
+            Don't stress too much over these internals—your brain is packed with knowledge, and you are going to absolutely crush it. 
+            Get some good sleep, read the questions calmly, and do your best! 🌟
+        </p>
+
+        <button class="btn-luck" onclick="burstConfetti()">Click for Good Vibes! 🎉</button>
+    </div>
+
+    <script>
+        function burstConfetti() {
+            const emojis = ['✨', '🌸', '🔮', '🌟', '📝', '🧸', '🎀', '💯'];
+            const particleCount = 40;
+
+            for (let i = 0; i < particleCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Randomly select cute emoji matching the pastel vibe
+                confetti.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                // Style placement and dimensions dynamically
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-5vh';
+                confetti.style.fontSize = Math.random() * (28 - 16) + 16 + 'px';
+                
+                // Varied speed and timing transitions
+                const duration = Math.random() * (4 - 2) + 2;
+                confetti.style.animationDuration = duration + 's';
+                confetti.style.opacity = Math.random();
+
+                document.body.appendChild(confetti);
+
+                // Clean up DOM once element leaves viewport
+                setTimeout(() => {
+                    confetti.remove();
+                }, duration * 1000);
+            }
+        }
+    </script>
+</body>
+</html>
